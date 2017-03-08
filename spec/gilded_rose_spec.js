@@ -59,4 +59,13 @@ describe("Gilded Rose", function() {
     });
   });
 
+  describe("Conjured items", function(){
+    it("degrade in Quality twice as fast as normal items", function(){
+      const gilgedRose = new Shop([ new Item('Conjured', 5, 10) ]);
+      const items = gilgedRose.updateQuality();
+      expect(items[0].sellIn).toEqual(4)
+      expect(items[0].quality).toEqual(8)
+    });
+  });
+
 });
