@@ -17,7 +17,14 @@ describe("Gilded Rose", function() {
     const gilgedRose = new Shop([ new Item("Aged Brie", 2, 0) ]);
     const items = gilgedRose.updateQuality();
     expect(items[0].quality).toEqual(1)
-  })
+  });
+
+  it("The Quality of an item is never more than 50", function(){
+    const gilgedRose = new Shop([ new Item('Aged Brie', 0, 50) ]);
+    const items = gilgedRose.updateQuality();
+    expect(items[0].quality).toEqual(50)
+  });
+
 
 
 });
