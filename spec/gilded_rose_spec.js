@@ -39,5 +39,24 @@ describe("Gilded Rose", function() {
     });
   });
 
+  describe("Backstage passes", function(){
+    it("Quality increases by 2 when there are 10 days or less but Quality drops to 0 after the concert", function(){
+      const gilgedRose = new Shop([ new Item('Backstage passes', 10, 10) ]);
+      const items = gilgedRose.updateQuality();
+      expect(items[0].quality).toEqual(12)
+    });
+
+    it("Quality increases by 3 when there are 5 days or less", function(){
+      const gilgedRose = new Shop([ new Item('Backstage passes', 5, 10) ]);
+      const items = gilgedRose.updateQuality();
+      expect(items[0].quality).toEqual(13)
+    });
+
+    it("but Quality drops to 0 after the concert", function(){
+      const gilgedRose = new Shop([ new Item('Backstage passes', 0, 10) ]);
+      const items = gilgedRose.updateQuality();
+      expect(items[0].quality).toEqual(0)
+    });
+  });
 
 });
